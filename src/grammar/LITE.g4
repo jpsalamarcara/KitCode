@@ -16,7 +16,7 @@ variable : ( (LETRA)+ (DIGITO | LETRA)*);
 valor : valor_numero| texto | VALOR_BOOLEANO;
 tipo : NUMERO | PALABRA | BOOLEANO;
 valor_numero : (PR_NEGATIVO)? (DIGITO)+ (PR_SEPARADOR_DECIMAL (DIGITO)+ )?;
-texto : variable PR_CONCATENAR FRASE | FRASE PR_CONCATENAR variable | FRASE PR_CONCATENAR FRASE | FRASE | variable;
+texto : variable PR_CONCATENAR FRASE | FRASE PR_CONCATENAR variable | FRASE PR_CONCATENAR FRASE | FRASE ;
 
 FRASE: '"' (~["\r\n] | '""')* '"';
 NUMERO : 'número'| 'numero' ;
