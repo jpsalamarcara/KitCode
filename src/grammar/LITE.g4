@@ -1,33 +1,84 @@
 grammar LITE;
-programa: PR_INICIO (sentencia)* PR_FIN EOF;
-sentencia: declaracion | asignacion | sentencia_si | sentencia_mientras | sentencia_imprimir | OTRO  ;
-sentencia_si: PR_SI '(' expresion_logica ')' PR_ENTONCES (sentencia)+ (sentencia_sino)? PR_FIN;
-sentencia_mientras: PR_MIENTRAS '(' expresion_logica ')' PR_HACER (sentencia)+ PR_FIN;
+programa
+: PR_INICIO
+ (sentencia)*
+ PR_FIN EOF;
+
+sentencia
+: declaracion
+|asignacion
+| sentencia_si
+| sentencia_mientras
+| sentencia_imprimir
+| OTRO  ;
+
+sentencia_si: PR_SI '(' expresion ')' PR_ENTONCES (sentencia)+ (sentencia_sino)? PR_FIN;
+
+sentencia_mientras: PR_MIENTRAS '(' expresion ')' PR_HACER (sentencia)+ PR_FIN;
+
 sentencia_imprimir: PR_IMPRIMIR '(' (expresion) ')' PR_FIN_SENTENCIA;
+
 sentencia_sino: PR_SINO (sentencia)+;
-declaracion : PR_CREA  variable  PR_DECLARADOR  tipo  PR_FIN_SENTENCIA ;
-asignacion: variable PR_ASIGNADOR expresion PR_FIN_SENTENCIA;
-expresion: expresion_concatenacion | expresion_logica |expresion_potencia;
-expresion_concatenacion : expresion_logica ( PR_CONCATENAR expresion_logica)+ ;
-expresion_logica: '('? expresion_logica_atomica ('igual' expresion_logica_atomica| 'diferente' expresion_logica_atomica| 'y' expresion_logica_atomica| 'o' expresion_logica_atomica| 'no' expresion_logica_atomica)+ ')'?;
-expresion_logica_atomica:  expresion_logico_matematica | VALOR_BOOLEANO | FRASE ;
-expresion_logico_matematica: '('? expresion_potencia ('>' expresion_potencia| '<' expresion_potencia| '>=' expresion_potencia| '<='expresion_potencia| '=='  expresion_potencia)* ')'?;
-expresion_potencia: 'potencia' '('expresion_suma ','expresion_suma')' | expresion_suma;
-expresion_suma :  expresion_multiplicacion ( '+' expresion_multiplicacion | '-' expresion_multiplicacion)*   ;
-expresion_multiplicacion:  expresion_aritmetica_atomica ( '*' expresion_aritmetica_atomica | '/' expresion_aritmetica_atomica)* ;
-expresion_aritmetica_atomica:  (valor_numero | variable ) | '(' expresion_potencia ')'  ;
-variable : ( (LETRA)+ (DIGITO | LETRA)*);
-tipo : NUMERO | PALABRA | BOOLEANO;
-valor_numero : (PR_NEGATIVO)?(DIGITO)+((PR_SEPARADOR_DECIMAL)(DIGITO+))?;
-FRASE: '"' (~["\r\n] | '""')* '"';
-NUMERO : 'número'| 'numero' ;
+
+declaracion : PR_CREA  VARIABLE  PR_DECLARADOR  tipo  PR_FIN_SENTENCIA ;
+
+asignacion: VARIABLE PR_ASIGNADOR expresion PR_FIN_SENTENCIA;
+
+expresion
+: expresion PR_OPERADOR_POTENCIA<assoc=right> expresion    #ExpPotencia
+| PR_NEGATIVO expresion                                    #NumeroNegativo
+| expresion PR_OPERADOR_MULTIPLICACION expresion           #ExpMultiplicacion
+| expresion PR_OPERADOR_DIVISION expresion                 #ExpDivision
+| expresion PR_OPERADOR_SUMA expresion                     #ExpSuma
+| expresion PR_OPERADOR_RESTA expresion                    #ExpResta
+| expresion PR_MENOR_IGUAL_QUE expresion                   #ExpMenorIgual
+| expresion PR_MAYOR_IGUAL_QUE expresion                   #ExpMayorIgual
+| expresion PR_MENOR_QUE expresion                         #ExpMenor
+| expresion PR_MAYOR_QUE expresion                         #ExpMayor
+| expresion PR_NO_IGUAL_QUE expresion                      #ExpNoIgual
+| expresion PR_IGUAL_QUE expresion                         #ExpIgual
+| expresion PR_Y expresion                                 #ExpY
+| expresion PR_O expresion                                 #ExpO
+| expresion_atomica                                        #ExpAtomica
+;
+
+expresion_atomica
+: PR_PAR_ABIERTO expresion PR_PAR_CERRADO                  #ExpParentesis
+| NUMERO                                                   #ANumero
+| (VERDADERO | FALSO)                                      #ABooleano
+|VARIABLE                                                  #AVariable
+|TEXTO                                                     #ATexto
+;
+
+tipo
+:NUMERO
+|PALABRA
+|BOOLEANO
+;
+
+PR_OPERADOR_POTENCIA : 'elevado';
+PR_NEGATIVO : '-';
+PR_OPERADOR_MULTIPLICACION: '*';
+PR_OPERADOR_DIVISION : '/';
+PR_OPERADOR_SUMA : '+' ;
+PR_OPERADOR_RESTA : '-';
+PR_MENOR_IGUAL_QUE : 'menor_igual';
+PR_MAYOR_IGUAL_QUE :  'mayor_igual';
+PR_MENOR_QUE : 'menor';
+PR_MAYOR_QUE : 'mayor';
+PR_NO_IGUAL_QUE : 'diferente';
+PR_IGUAL_QUE : 'igual';
+PR_Y : 'y'|'Y';
+PR_O : 'o'|'O';
+PR_PAR_ABIERTO : '(';
+PR_PAR_CERRADO : ')';
+NUMERO :  [0-9]+ ('.' [0-9]*)? ;
+VERDADERO: 'verdadero';
+FALSO: 'falso';
+VARIABLE: [a-zA-Z_] [a-zA-Z_0-9]*;
+TEXTO : '"' (~["\r\n] | '""')* '"';
 PALABRA : 'palabra' ;
 BOOLEANO :  'booleano';
-
-LETRA : [a-zA-Z_];
-DIGITO: [0-9];
-VALOR_BOOLEANO : 'verdadero'| 'falso';
-PR_POSITIVO: ('0'..'9')+ ('.' ('0'..'9')+)?;
 PR_INICIO : 'inicio';
 PR_FIN : 'fin';
 PR_CREA : 'crea';
@@ -40,10 +91,5 @@ PR_MIENTRAS : 'mientras';
 PR_HACER : 'hacer';
 PR_IMPRIMIR : 'mostrar';
 PR_SINO : 'sino';
-PR_NEGATIVO : 'menos';
-PR_CONCATENAR: 'con';
-PR_SEPARADOR_DECIMAL: '.';
 SPACE : [ \t\r\n] -> skip;
 OTRO : .  ;
-
-
