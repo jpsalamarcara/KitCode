@@ -88,105 +88,245 @@ public interface LITEListener extends ParseTreeListener {
 	 */
 	void exitAsignacion(LITEParser.AsignacionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion}.
+	 * Enter a parse tree produced by the {@code ExpAtomica}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion(LITEParser.ExpresionContext ctx);
+	void enterExpAtomica(LITEParser.ExpAtomicaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion}.
+	 * Exit a parse tree produced by the {@code ExpAtomica}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion(LITEParser.ExpresionContext ctx);
+	void exitExpAtomica(LITEParser.ExpAtomicaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * Enter a parse tree produced by the {@code ExpMenorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
+	void enterExpMenorIgual(LITEParser.ExpMenorIgualContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * Exit a parse tree produced by the {@code ExpMenorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
+	void exitExpMenorIgual(LITEParser.ExpMenorIgualContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_logica}.
+	 * Enter a parse tree produced by the {@code ExpNoIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_logica(LITEParser.Expresion_logicaContext ctx);
+	void enterExpNoIgual(LITEParser.ExpNoIgualContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_logica}.
+	 * Exit a parse tree produced by the {@code ExpNoIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_logica(LITEParser.Expresion_logicaContext ctx);
+	void exitExpNoIgual(LITEParser.ExpNoIgualContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
+	 * Enter a parse tree produced by the {@code ExpMayor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
+	void enterExpMayor(LITEParser.ExpMayorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
+	 * Exit a parse tree produced by the {@code ExpMayor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
+	void exitExpMayor(LITEParser.ExpMayorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_logico_matematica}.
+	 * Enter a parse tree produced by the {@code NumeroNegativo}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_logico_matematica(LITEParser.Expresion_logico_matematicaContext ctx);
+	void enterNumeroNegativo(LITEParser.NumeroNegativoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_logico_matematica}.
+	 * Exit a parse tree produced by the {@code NumeroNegativo}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_logico_matematica(LITEParser.Expresion_logico_matematicaContext ctx);
+	void exitNumeroNegativo(LITEParser.NumeroNegativoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * Enter a parse tree produced by the {@code ExpMultiplicacion}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	void enterExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * Exit a parse tree produced by the {@code ExpMultiplicacion}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	void exitExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * Enter a parse tree produced by the {@code ExpPotencia}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	void enterExpPotencia(LITEParser.ExpPotenciaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * Exit a parse tree produced by the {@code ExpPotencia}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	void exitExpPotencia(LITEParser.ExpPotenciaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * Enter a parse tree produced by the {@code ExpDivision}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	void enterExpDivision(LITEParser.ExpDivisionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * Exit a parse tree produced by the {@code ExpDivision}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	void exitExpDivision(LITEParser.ExpDivisionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * Enter a parse tree produced by the {@code ExpO}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	void enterExpO(LITEParser.ExpOContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * Exit a parse tree produced by the {@code ExpO}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	void exitExpO(LITEParser.ExpOContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#variable}.
+	 * Enter a parse tree produced by the {@code ExpMenor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariable(LITEParser.VariableContext ctx);
+	void enterExpMenor(LITEParser.ExpMenorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#variable}.
+	 * Exit a parse tree produced by the {@code ExpMenor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariable(LITEParser.VariableContext ctx);
+	void exitExpMenor(LITEParser.ExpMenorContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpIgual(LITEParser.ExpIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpIgual(LITEParser.ExpIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpSuma}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpSuma(LITEParser.ExpSumaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpSuma}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpSuma(LITEParser.ExpSumaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpY}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpY(LITEParser.ExpYContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpY}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpY(LITEParser.ExpYContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpResta}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpResta(LITEParser.ExpRestaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpResta}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpResta(LITEParser.ExpRestaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpMayorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpMayorIgual(LITEParser.ExpMayorIgualContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpMayorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpMayorIgual(LITEParser.ExpMayorIgualContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ExpParentesis}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpParentesis(LITEParser.ExpParentesisContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ExpParentesis}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpParentesis(LITEParser.ExpParentesisContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ANumero}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterANumero(LITEParser.ANumeroContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ANumero}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitANumero(LITEParser.ANumeroContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ABooleano}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterABooleano(LITEParser.ABooleanoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ABooleano}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitABooleano(LITEParser.ABooleanoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code AVariable}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterAVariable(LITEParser.AVariableContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code AVariable}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitAVariable(LITEParser.AVariableContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ATexto}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterATexto(LITEParser.ATextoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ATexto}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitATexto(LITEParser.ATextoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LITEParser#tipo}.
 	 * @param ctx the parse tree
@@ -197,14 +337,4 @@ public interface LITEListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTipo(LITEParser.TipoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LITEParser#valor_numero}.
-	 * @param ctx the parse tree
-	 */
-	void enterValor_numero(LITEParser.Valor_numeroContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#valor_numero}.
-	 * @param ctx the parse tree
-	 */
-	void exitValor_numero(LITEParser.Valor_numeroContext ctx);
 }
