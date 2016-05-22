@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>AJAX</h2>
+
+<label id="label1">HOLA</label>
+
+<button type="button" onclick="loadDoc()">Request data</button>
+ 
+<script>
+function loadDoc() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "https://54.191.121.233:8181/Compilador/Compilar", true);
+	xhttp.setRequestHeader("Content-type", "text/plain");
+	xhttp.send("asasas");
+	document.getElementById("label1").innerHTML = xhttp.responseType ;
+}
+</script>
+
+</body>
+</html>
