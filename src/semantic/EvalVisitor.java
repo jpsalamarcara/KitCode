@@ -333,7 +333,7 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
         Value valor = memoria.get(variable);
 
         if(valor==null){
-            throw new RuntimeException("la variable "+variable+" no está asignada");
+            throw new RuntimeException("la variable "+variable+" no está asignada.");
         }
 
         return valor;

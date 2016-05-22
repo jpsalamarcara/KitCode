@@ -15,14 +15,20 @@ public class ExecuteLITEProgram {
 
         ANTLRInputStream in = new ANTLRInputStream(programa
         );
-
         LITELexer lexer = new LITELexer(in);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         LITEParser parser = new LITEParser(tokens);
         ParseTree tree = parser.programa();
         EvalVisitor visitor = new EvalVisitor();
-        visitor.visit(tree);
-        return visitor.getSalida();
+
+        String extra_msgs ="";
+        try{
+            visitor.visit(tree);
+        }catch(Exception e){
+            extra_msgs = extra_msgs.concat(e.getMessage());
+        }
+
+        return visitor.getSalida() + "ERROR: "+extra_msgs;
     }
 
 
