@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<title>Kitcode</title>
+<meta charset="utf-8"/>
+<!-- Code mirror -->
+<link rel=stylesheet href="../codemirror-5.15.2/doc/docs.css">
+<link rel="stylesheet" href="../codemirror-5.15.2/lib/codemirror.css">
+<link rel="stylesheet" href="../codemirror-5.15.2/theme/dracula.css">
+<link rel="icon" type="image/png" href="../image/icono.png" /> 
+<link rel="stylesheet"  href="aux.css" /> 
+<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link href='../css/letra.css' rel='stylesheet' type='text/css'>
+<body style="overflow-x: hidden; overflow-y: hidden;">
+<script src="../codemirror-5.15.2/lib/codemirror.js"></script>
+<script src="../codemirror-5.15.2/mode/javascript/javascript.js"></script>
+<script src="../codemirror-5.15.2/addon/selection/active-line.js"></script>
+<script src="../codemirror-5.15.2/addon/edit/matchbrackets.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<nav class="navbar navbar-inverse">	
+    <ul class="row">
+    <li class="spanx-12">
+      <span class="sr-only">(current)</span><img src="../image/titulo.png" alt="Cinque Terre" width="550" height="70">
+    </li>
+  </ul> 
+</nav>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" onclick="updateCodeMirror(1);" style="margin-left: 100px; ">
+  Empieza a programar aquí!
+</button>
+
+<!--paso 1-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="opacity: none;">
+    <label style="color: white; margin-left: 200px; margin-top: 155px; position: absolute; font-family: 'Pacifico'; font-size: 50px;">El programa siempre debe iniciar con un "inicia"</label>
+    <img src="../image/flecha2.png" alt="Cinque Terre" width="100" height="100" style="margin-left: 80px; margin-top: 165px;  position: absolute;">
+    <button onclick="updateCodeMirror(2);" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#myModal1" style="margin-left: 600px; margin-top: 250px;">Entendido</button>
+</div>
+<!--Paso 2-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="opacity: none;">
+    <label style="width: 1000px; color: white; margin-left: 200px; margin-top: 200px; position: absolute; font-family: 'Pacifico'; font-size: 50px;">Para imprimir debes usar "mostrar", seguido de lo que deseas imprimir.</label>
+    <img src="../image/flecha2.png" alt="Cinque Terre" width="100" height="100" style="margin-left: 80px; margin-top: 185px;  position: absolute;">
+    <button onclick="updateCodeMirror(3);" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-dismiss="modal" data-target="#myModal2" style="margin-left: 600px; margin-top: 400px;">Entendido</button>
+</div>
+<!--Paso 3-->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="opacity: none;">
+    <label style="width: 1000px; color: white; margin-left: 200px; margin-top: 200px; position: absolute; font-family: 'Pacifico'; font-size: 50px;">Para finalizar, debes usar la palabra "fin".</label>
+    <img src="../image/flecha2.png" alt="Cinque Terre" width="100" height="100" style="margin-left: 80px; margin-top: 200px;  position: absolute;">
+    <button onclick="" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal3" data-dismiss="modal" style="margin-left: 600px; margin-top: 300px;">Entendido</button>
+</div>
+<!--Paso 4-->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="opacity: none;">
+    <label style="width: 1000px; color: white; margin-left: 200px; margin-top: 300px; position: absolute; font-family: 'Pacifico'; font-size: 50px;">Solo falta compilar.</label>
+    <img src="../image/flecha1.png" alt="Cinque Terre" width="100" height="100" style="margin-left: 200px; margin-top: 450px;  position: absolute;">
+    <button onclick="loadDoc()" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-dismiss="modal" style="margin-left: 400px; margin-top: 400px;">Listo!</button>
+</div>
+<div class="row" >		
+  <div class="col-sm-6" >
+		<div class="input-group" style=" width: 500px; margin-left: 15px; height: 1000px; margin-top: 10px;" >
+		    <form style="width: 600px; height: 1000px;"><textarea id="cm" name="cm" ></textarea></form>
+		</div>
+
+	</div>
+	<button type="button" class="btn btn-primary btn-lg"  onclick="loadDoc();" style="margin-left: -550px; margin-top: 370px; position: absolute;">Compilar</button>
+  <div class="col-sm-6" style=" margin-left: 120px;  width: 350px; height: 250px; border: solid; background-color: gray; padding-top: 10px; padding-left: 10px;">
+		<label style="color: white" id="lb_texto"></label>
+		<br>	
+  </div> 
+</div>
+</body>
+
+<script type="text/javascript">
+	function updateCodeMirror(data){
+		var dato="";
+			if(data == 1){
+				dato="inicio";
+			}
+			if (data == 2) {
+				dato = "mostrar ("+"Hola Mundo);";
+			}
+			if (data == 3) {
+				dato = "fin";
+			}
+	        var cm = $('.CodeMirror')[0].CodeMirror;
+	        var doc = cm.getDoc();
+	        var cursor = doc.getCursor(); // gets the line number in the cursor position
+	        var line = doc.getLine(cursor.line); // get the line contents
+	        console.log(doc);
+	        var pos = { // create a new object to avoid mutation of the original selection
+	            line: (doc.size+5),
+	            ch: line.length - 1 // set the character position to the end of the line
+	        }
+	        doc.replaceRange(dato+'\n', pos); // adds a new line
+    }
+</script>
+<script src="./custom.mode.js"></script>
+<script>
+
+
+    CodeMirror.defineMode("mymode", function() {
+
+        return {
+            token: function(stream,state) {
+
+                if (stream.match("aaa") ) {
+                    return "style1";
+                } else if (stream.match("bbb") ) {
+                    return "style2";
+                } else {
+                    stream.next();
+                    return null;
+                }
+            }
+        };
+
+    });
+
+    var editor = CodeMirror.fromTextArea(document.getElementById('cm'), {
+        mode: "javascript",
+        lineNumbers: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        theme: "dracula"
+    });
+    
+    function loadDoc() {
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+	
+	if (xhttp.readyState == 4 && xhttp.status == 200){
+		document.getElementById("lb_texto").innerHTML = xhttp.responseText;
+		}
+	}
+	xhttp.open("POST", "http://54.191.121.233:8080/Compilador/Compilar", true);
+	xhttp.setRequestHeader("Content-type", "text/plain");
+	xhttp.send(editor.getValue());	
+	}
+</script>
+</html>
