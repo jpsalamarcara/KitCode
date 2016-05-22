@@ -59,75 +59,149 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitAsignacion(LITEParser.AsignacionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion}.
+	 * Visit a parse tree produced by the {@code ExpAtomica}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion(LITEParser.ExpresionContext ctx);
+	T visitExpAtomica(LITEParser.ExpAtomicaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * Visit a parse tree produced by the {@code ExpMenorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
+	T visitExpMenorIgual(LITEParser.ExpMenorIgualContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_logica}.
+	 * Visit a parse tree produced by the {@code ExpNoIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_logica(LITEParser.Expresion_logicaContext ctx);
+	T visitExpNoIgual(LITEParser.ExpNoIgualContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
+	 * Visit a parse tree produced by the {@code ExpMayor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
+	T visitExpMayor(LITEParser.ExpMayorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_logico_matematica}.
+	 * Visit a parse tree produced by the {@code NumeroNegativo}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_logico_matematica(LITEParser.Expresion_logico_matematicaContext ctx);
+	T visitNumeroNegativo(LITEParser.NumeroNegativoContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * Visit a parse tree produced by the {@code ExpMultiplicacion}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	T visitExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * Visit a parse tree produced by the {@code ExpPotencia}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	T visitExpPotencia(LITEParser.ExpPotenciaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * Visit a parse tree produced by the {@code ExpDivision}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	T visitExpDivision(LITEParser.ExpDivisionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * Visit a parse tree produced by the {@code ExpO}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	T visitExpO(LITEParser.ExpOContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#variable}.
+	 * Visit a parse tree produced by the {@code ExpMenor}
+	 * labeled alternative in {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVariable(LITEParser.VariableContext ctx);
+	T visitExpMenor(LITEParser.ExpMenorContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpIgual(LITEParser.ExpIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpSuma}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpSuma(LITEParser.ExpSumaContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpY}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpY(LITEParser.ExpYContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpResta}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpResta(LITEParser.ExpRestaContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpMayorIgual}
+	 * labeled alternative in {@link LITEParser#expresion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpMayorIgual(LITEParser.ExpMayorIgualContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ExpParentesis}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpParentesis(LITEParser.ExpParentesisContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ANumero}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitANumero(LITEParser.ANumeroContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ABooleano}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitABooleano(LITEParser.ABooleanoContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code AVariable}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAVariable(LITEParser.AVariableContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code ATexto}
+	 * labeled alternative in {@link LITEParser#expresion_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitATexto(LITEParser.ATextoContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LITEParser#tipo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitTipo(LITEParser.TipoContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LITEParser#valor_numero}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitValor_numero(LITEParser.Valor_numeroContext ctx);
 }
