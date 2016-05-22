@@ -86,21 +86,46 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpMenorIgual(LITEParser.ExpMenorIgualContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpMenorIgual(LITEParser.ExpMenorIgualContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        return new Value(izquierdo.asDouble() <= derecho.asDouble());
+
+         }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpNoIgual(LITEParser.ExpNoIgualContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpNoIgual(LITEParser.ExpNoIgualContext ctx) {
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        if(izquierdo.isDouble() && derecho.isDouble()){
+            double diff = Math.abs(izquierdo.asDouble()-derecho.asDouble());
+            return new Value(diff>=SMALL_VALUE);
+
+        }
+
+        return new Value(!izquierdo.equals(derecho));
+
+         }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpMayor(LITEParser.ExpMayorContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpMayor(LITEParser.ExpMayorContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        return new Value(izquierdo.asDouble() > derecho.asDouble());
+    }
     /**
      * {@inheritDoc}
      *
@@ -116,7 +141,10 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx) {
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+        return new Value(izquierdo.asDouble()*derecho.asDouble()); }
     /**
      * {@inheritDoc}
      *
@@ -133,7 +161,13 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpDivision(LITEParser.ExpDivisionContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpDivision(LITEParser.ExpDivisionContext ctx) {
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+        if(derecho.asDouble()==0) {
+            throw new RuntimeException("Division por cero!");
+        }
+        return new Value(izquierdo.asDouble() / derecho.asDouble()); }
     /**
      * {@inheritDoc}
      *
@@ -147,42 +181,85 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpMenor(LITEParser.ExpMenorContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpMenor(LITEParser.ExpMenorContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        return new Value(izquierdo.asDouble() < derecho.asDouble()); }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpIgual(LITEParser.ExpIgualContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpIgual(LITEParser.ExpIgualContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        if(izquierdo.isDouble() && derecho.isDouble()){
+            double diff = Math.abs(izquierdo.asDouble()-derecho.asDouble());
+            return new Value(diff<SMALL_VALUE);
+
+        }
+
+        return new Value(izquierdo.equals(derecho));
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpSuma(LITEParser.ExpSumaContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpSuma(LITEParser.ExpSumaContext ctx) {
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+        if(izquierdo.isDouble() && derecho.isDouble() ) {
+            return new Value(izquierdo.asDouble()+derecho.asDouble());
+        }
+            return new Value(izquierdo.asString()+derecho.asString());
+
+         }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpY(LITEParser.ExpYContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpY(LITEParser.ExpYContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+       return new Value(izquierdo.asBoolean() && derecho.asBoolean());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpResta(LITEParser.ExpRestaContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpResta(LITEParser.ExpRestaContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        return new Value(izquierdo.asDouble()-derecho.asDouble());
+    }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitExpMayorIgual(LITEParser.ExpMayorIgualContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitExpMayorIgual(LITEParser.ExpMayorIgualContext ctx) {
+
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+
+        return new Value(izquierdo.asDouble() >= derecho.asDouble());
+    }
     /**
      * {@inheritDoc}
      *
