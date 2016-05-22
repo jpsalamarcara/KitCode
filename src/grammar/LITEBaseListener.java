@@ -28,18 +28,6 @@ public class LITEBaseListener implements LITEListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCuerpo(LITEParser.CuerpoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCuerpo(LITEParser.CuerpoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterSentencia(LITEParser.SentenciaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -47,30 +35,6 @@ public class LITEBaseListener implements LITEListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitSentencia(LITEParser.SentenciaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclaracion(LITEParser.DeclaracionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclaracion(LITEParser.DeclaracionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAsignacion(LITEParser.AsignacionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAsignacion(LITEParser.AsignacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -124,6 +88,30 @@ public class LITEBaseListener implements LITEListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDeclaracion(LITEParser.DeclaracionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDeclaracion(LITEParser.DeclaracionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion(LITEParser.AsignacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion(LITEParser.AsignacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterExpresion(LITEParser.ExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -131,6 +119,18 @@ public class LITEBaseListener implements LITEListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpresion(LITEParser.ExpresionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -148,13 +148,13 @@ public class LITEBaseListener implements LITEListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpresion_matematica(LITEParser.Expresion_matematicaContext ctx) { }
+	@Override public void enterExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpresion_matematica(LITEParser.Expresion_matematicaContext ctx) { }
+	@Override public void exitExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -172,6 +172,54 @@ public class LITEBaseListener implements LITEListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterExpresion_potencia(LITEParser.Expresion_potenciaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpresion_potencia(LITEParser.Expresion_potenciaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpresion_suma(LITEParser.Expresion_sumaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpresion_suma(LITEParser.Expresion_sumaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable(LITEParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -179,18 +227,6 @@ public class LITEBaseListener implements LITEListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariable(LITEParser.VariableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterValor(LITEParser.ValorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitValor(LITEParser.ValorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -215,18 +251,6 @@ public class LITEBaseListener implements LITEListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValor_numero(LITEParser.Valor_numeroContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTexto(LITEParser.TextoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTexto(LITEParser.TextoContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

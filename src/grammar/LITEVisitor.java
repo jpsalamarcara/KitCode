@@ -17,29 +17,11 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrograma(LITEParser.ProgramaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#cuerpo}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitCuerpo(LITEParser.CuerpoContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link LITEParser#sentencia}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitSentencia(LITEParser.SentenciaContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LITEParser#declaracion}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDeclaracion(LITEParser.DeclaracionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LITEParser#asignacion}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAsignacion(LITEParser.AsignacionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LITEParser#sentencia_si}.
 	 * @param ctx the parse tree
@@ -65,11 +47,29 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSentencia_sino(LITEParser.Sentencia_sinoContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LITEParser#declaracion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclaracion(LITEParser.DeclaracionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LITEParser#asignacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAsignacion(LITEParser.AsignacionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitExpresion(LITEParser.ExpresionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LITEParser#expresion_logica}.
 	 * @param ctx the parse tree
@@ -77,11 +77,11 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpresion_logica(LITEParser.Expresion_logicaContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link LITEParser#expresion_matematica}.
+	 * Visit a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpresion_matematica(LITEParser.Expresion_matematicaContext ctx);
+	T visitExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LITEParser#expresion_logico_matematica}.
 	 * @param ctx the parse tree
@@ -89,17 +89,35 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpresion_logico_matematica(LITEParser.Expresion_logico_matematicaContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LITEParser#variable}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitVariable(LITEParser.VariableContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LITEParser#valor}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitValor(LITEParser.ValorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LITEParser#tipo}.
 	 * @param ctx the parse tree
@@ -112,10 +130,4 @@ public interface LITEVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValor_numero(LITEParser.Valor_numeroContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link LITEParser#texto}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTexto(LITEParser.TextoContext ctx);
 }

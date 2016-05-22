@@ -18,16 +18,6 @@ public interface LITEListener extends ParseTreeListener {
 	 */
 	void exitPrograma(LITEParser.ProgramaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#cuerpo}.
-	 * @param ctx the parse tree
-	 */
-	void enterCuerpo(LITEParser.CuerpoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#cuerpo}.
-	 * @param ctx the parse tree
-	 */
-	void exitCuerpo(LITEParser.CuerpoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link LITEParser#sentencia}.
 	 * @param ctx the parse tree
 	 */
@@ -37,26 +27,6 @@ public interface LITEListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitSentencia(LITEParser.SentenciaContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LITEParser#declaracion}.
-	 * @param ctx the parse tree
-	 */
-	void enterDeclaracion(LITEParser.DeclaracionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#declaracion}.
-	 * @param ctx the parse tree
-	 */
-	void exitDeclaracion(LITEParser.DeclaracionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LITEParser#asignacion}.
-	 * @param ctx the parse tree
-	 */
-	void enterAsignacion(LITEParser.AsignacionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#asignacion}.
-	 * @param ctx the parse tree
-	 */
-	void exitAsignacion(LITEParser.AsignacionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LITEParser#sentencia_si}.
 	 * @param ctx the parse tree
@@ -98,6 +68,26 @@ public interface LITEListener extends ParseTreeListener {
 	 */
 	void exitSentencia_sino(LITEParser.Sentencia_sinoContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LITEParser#declaracion}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclaracion(LITEParser.DeclaracionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#declaracion}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclaracion(LITEParser.DeclaracionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LITEParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion(LITEParser.AsignacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion(LITEParser.AsignacionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LITEParser#expresion}.
 	 * @param ctx the parse tree
 	 */
@@ -107,6 +97,16 @@ public interface LITEListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpresion(LITEParser.ExpresionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#expresion_concatenacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_concatenacion(LITEParser.Expresion_concatenacionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LITEParser#expresion_logica}.
 	 * @param ctx the parse tree
@@ -118,15 +118,15 @@ public interface LITEListener extends ParseTreeListener {
 	 */
 	void exitExpresion_logica(LITEParser.Expresion_logicaContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LITEParser#expresion_matematica}.
+	 * Enter a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
 	 * @param ctx the parse tree
 	 */
-	void enterExpresion_matematica(LITEParser.Expresion_matematicaContext ctx);
+	void enterExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LITEParser#expresion_matematica}.
+	 * Exit a parse tree produced by {@link LITEParser#expresion_logica_atomica}.
 	 * @param ctx the parse tree
 	 */
-	void exitExpresion_matematica(LITEParser.Expresion_matematicaContext ctx);
+	void exitExpresion_logica_atomica(LITEParser.Expresion_logica_atomicaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LITEParser#expresion_logico_matematica}.
 	 * @param ctx the parse tree
@@ -138,6 +138,46 @@ public interface LITEListener extends ParseTreeListener {
 	 */
 	void exitExpresion_logico_matematica(LITEParser.Expresion_logico_matematicaContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#expresion_potencia}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_potencia(LITEParser.Expresion_potenciaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#expresion_suma}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_suma(LITEParser.Expresion_sumaContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#expresion_multiplicacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_multiplicacion(LITEParser.Expresion_multiplicacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LITEParser#expresion_aritmetica_atomica}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpresion_aritmetica_atomica(LITEParser.Expresion_aritmetica_atomicaContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LITEParser#variable}.
 	 * @param ctx the parse tree
 	 */
@@ -147,16 +187,6 @@ public interface LITEListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariable(LITEParser.VariableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LITEParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void enterValor(LITEParser.ValorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#valor}.
-	 * @param ctx the parse tree
-	 */
-	void exitValor(LITEParser.ValorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LITEParser#tipo}.
 	 * @param ctx the parse tree
@@ -177,14 +207,4 @@ public interface LITEListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValor_numero(LITEParser.Valor_numeroContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link LITEParser#texto}.
-	 * @param ctx the parse tree
-	 */
-	void enterTexto(LITEParser.TextoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link LITEParser#texto}.
-	 * @param ctx the parse tree
-	 */
-	void exitTexto(LITEParser.TextoContext ctx);
 }
