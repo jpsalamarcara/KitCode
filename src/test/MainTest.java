@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import semantic.EvalVisitor;
+import semantic.ExecuteLITEProgram;
 import semantic.Value;
 
 /**
@@ -45,16 +46,14 @@ public class MainTest {
                 "fin\n" +
                 "fin";
 
-        ANTLRInputStream in = new ANTLRInputStream(programa2
+        String programa3 = "inicio\n" +
+                "mostrar (\"Hola Mundo\");\n" +
+                "fin";
+
+        ANTLRInputStream in = new ANTLRInputStream(programa3
                 );
 
-        LITELexer lexer = new LITELexer(in);
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        LITEParser parser = new LITEParser(tokens);
-        ParseTree tree = parser.programa();
-        EvalVisitor visitor = new EvalVisitor();
-        visitor.visit(tree);
-        System.out.println(visitor.getSalida());
+       System.out.println(ExecuteLITEProgram.execute(programa3));
 
     }
 }

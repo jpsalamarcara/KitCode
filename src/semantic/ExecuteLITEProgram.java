@@ -25,10 +25,10 @@ public class ExecuteLITEProgram {
         try{
             visitor.visit(tree);
         }catch(Exception e){
-            extra_msgs = extra_msgs.concat(e.getMessage());
+            extra_msgs = extra_msgs.concat("ERROR: "+e.getMessage());
         }
 
-        return visitor.getSalida() + "ERROR: "+extra_msgs;
+        return visitor.getSalida() +extra_msgs;
     }
 
 

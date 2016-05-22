@@ -77,7 +77,6 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
 
         Value valor = this.visit(ctx.expresion());
         salida=salida.concat(valor.toString()+"\n");
-        System.out.println(valor);
         return Value.VOID; }
     /**
      * {@inheritDoc}
