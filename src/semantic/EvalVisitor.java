@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import grammar.LITEBaseVisitor;
+import grammar.LITEParser;
 
 /**
  * Created by juanpablo on 22/05/16.
@@ -13,232 +14,244 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
     // store variables (there's only one global scope!)
     private Map<String, Value> memory = new HashMap<String, Value>();
 
-    // assignment/id overrides
     @Override
-    public Value visitAssignment(MuParser.AssignmentContext ctx) {
-        String id = ctx.ID().getText();
-        Value value = this.visit(ctx.expr());
-        return memory.put(id, value);
+    public Value visitPrograma(LITEParser.ProgramaContext ctx) {
+        return visitChildren(ctx);
     }
-
-    @Override
-    public Value visitIdAtom(MuParser.IdAtomContext ctx) {
-        String id = ctx.getText();
-        Value value = memory.get(id);
-        if(value == null) {
-            throw new RuntimeException("no such variable: " + id);
-        }
-        return value;
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitSentencia(LITEParser.SentenciaContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitSentencia_si(LITEParser.Sentencia_siContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitSentencia_mientras(LITEParser.Sentencia_mientrasContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitSentencia_imprimir(LITEParser.Sentencia_imprimirContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitSentencia_sino(LITEParser.Sentencia_sinoContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitDeclaracion(LITEParser.DeclaracionContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitAsignacion(LITEParser.AsignacionContext ctx) {
+        String variable = ctx.VARIABLE().getText();
+        Value valor = this.visit(ctx.expresion());
+        return memory.put(variable,valor);
     }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
 
-    // atom overrides
-    @Override
-    public Value visitStringAtom(MuParser.StringAtomContext ctx) {
-        String str = ctx.getText();
-        // strip quotes
-        str = str.substring(1, str.length() - 1).replace("\"\"", "\"");
-        return new Value(str);
+
+    @Override public Value visitExpAtomica(LITEParser.ExpAtomicaContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpMenorIgual(LITEParser.ExpMenorIgualContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpNoIgual(LITEParser.ExpNoIgualContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpMayor(LITEParser.ExpMayorContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitNumeroNegativo(LITEParser.NumeroNegativoContext ctx) {
+        Value valor = this.visit(ctx.expresion());
+        return new Value(-valor.asDouble()); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpMultiplicacion(LITEParser.ExpMultiplicacionContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpPotencia(LITEParser.ExpPotenciaContext ctx) {
+        Value izquierdo = this.visit(ctx.expresion(0));
+        Value derecho = this.visit(ctx.expresion(1));
+        return new Value(Math.pow(izquierdo.asDouble(),derecho.asDouble())); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpDivision(LITEParser.ExpDivisionContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpO(LITEParser.ExpOContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpMenor(LITEParser.ExpMenorContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpIgual(LITEParser.ExpIgualContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpSuma(LITEParser.ExpSumaContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpY(LITEParser.ExpYContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpResta(LITEParser.ExpRestaContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpMayorIgual(LITEParser.ExpMayorIgualContext ctx) { return visitChildren(ctx); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitExpParentesis(LITEParser.ExpParentesisContext ctx) {
+
+        return this.visit(ctx.expresion());
     }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitANumero(LITEParser.ANumeroContext ctx) {
 
-    @Override
-    public Value visitNumberAtom(MuParser.NumberAtomContext ctx) {
-        return new Value(Double.valueOf(ctx.getText()));
-    }
+        return new Value(Double.valueOf(ctx.getText())); }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitABooleano(LITEParser.ABooleanoContext ctx) {
 
-    @Override
-    public Value visitBooleanAtom(MuParser.BooleanAtomContext ctx) {
         return new Value(Boolean.valueOf(ctx.getText()));
-    }
+         }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitAVariable(LITEParser.AVariableContext ctx) {
+        String variable = ctx.getText();
+        Value valor = memory.get(variable);
 
-    @Override
-    public Value visitNilAtom(MuParser.NilAtomContext ctx) {
-        return new Value(null);
-    }
-
-    // expr overrides
-    @Override
-    public Value visitParExpr(MuParser.ParExprContext ctx) {
-        return this.visit(ctx.expr());
-    }
-
-    @Override
-    public Value visitPowExpr(MuParser.PowExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(Math.pow(left.asDouble(), right.asDouble()));
-    }
-
-    @Override
-    public Value visitUnaryMinusExpr(MuParser.UnaryMinusExprContext ctx) {
-        Value value = this.visit(ctx.expr());
-        return new Value(-value.asDouble());
-    }
-
-    @Override
-    public Value visitNotExpr(MuParser.NotExprContext ctx) {
-        Value value = this.visit(ctx.expr());
-        return new Value(!value.asBoolean());
-    }
-
-    @Override
-    public Value visitMultExpr(MuParser.MultExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() * right.asDouble());
-    }
-
-    @Override
-    public Value visitModExpr(MuParser.ModExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() % right.asDouble());
-    }
-
-    @Override
-    public Value visitDivExpr(MuParser.DivExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() / right.asDouble());
-    }
-
-    @Override
-    public Value visitPlusExpr(MuParser.PlusExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        if(left.isDouble() && right.isDouble()) {
-            return new Value(left.asDouble() + right.asDouble());
-        }
-        else {
-            return new Value(left.asString() + right.asString());
-        }
-    }
-
-    @Override
-    public Value visitMinusExpr(MuParser.MinusExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() - right.asDouble());
-    }
-
-    @Override
-    public Value visitLtExpr(MuParser.LtExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() < right.asDouble());
-    }
-
-    @Override
-    public Value visitLteqExpr(MuParser.LteqExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() <= right.asDouble());
-    }
-
-    @Override
-    public Value visitGtExpr(MuParser.GtExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() > right.asDouble());
-    }
-
-    @Override
-    public Value visitGteqExpr(MuParser.GteqExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asDouble() >= right.asDouble());
-    }
-
-    @Override
-    public Value visitNeqExpr(MuParser.NeqExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        if(left.isDouble() && right.isDouble()) {
-            double diff = Math.abs(left.asDouble() - right.asDouble());
-            return new Value(diff >= SMALL_VALUE);
-        }
-        else {
-            return new Value(!left.equals(right));
-        }
-    }
-
-    @Override
-    public Value visitEqExpr(MuParser.EqExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        if(left.isDouble() && right.isDouble()) {
-            double diff = Math.abs(left.asDouble() - right.asDouble());
-            return new Value(diff < SMALL_VALUE);
-        }
-        else {
-            return new Value(left.equals(right));
-        }
-    }
-
-    @Override
-    public Value visitAndExpr(MuParser.AndExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asBoolean() && right.asBoolean());
-    }
-
-    @Override
-    public Value visitOrExpr(MuParser.OrExprContext ctx) {
-        Value left = this.visit(ctx.expr(0));
-        Value right = this.visit(ctx.expr(1));
-        return new Value(left.asBoolean() || right.asBoolean());
-    }
-
-    // log override
-    @Override
-    public Value visitLog(MuParser.LogContext ctx) {
-        Value value = this.visit(ctx.expr());
-        System.out.println(value);
-        return value;
-    }
-
-    // if override
-    @Override
-    public Value visitIf_stat(MuParser.If_statContext ctx) {
-
-        List<MuParser.Condition_blockContext> conditions = ctx.condition_block();
-
-        boolean evaluatedBlock = false;
-
-        for(MuParser.Condition_blockContext condition : conditions) {
-
-            Value evaluated = this.visit(condition.expr());
-
-            if(evaluated.asBoolean()) {
-                evaluatedBlock = true;
-                // evaluate this block whose expr==true
-                this.visit(condition.stat_block());
-                break;
-            }
+        if(valor==null){
+            throw new RuntimeException("la variable "+variable+" no está asignada");
         }
 
-        if(!evaluatedBlock && ctx.stat_block() != null) {
-            // evaluate the else-stat_block (if present == not null)
-            this.visit(ctx.stat_block());
-        }
+        return valor;
 
-        return Value.VOID;
+         }
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitATexto(LITEParser.ATextoContext ctx) {
+
+        String texto = ctx.getText();
+        texto = texto.substring(1, texto.length()-1).replace("\"\"","\"");
+        Value valor = new Value(texto);
+        return valor;
+
     }
 
-    // while override
-    @Override
-    public Value visitWhile_stat(MuParser.While_statContext ctx) {
 
-        Value value = this.visit(ctx.expr());
 
-        while(value.asBoolean()) {
+    /**
+     * {@inheritDoc}
+     *
+     * <p>The default implementation returns the result of calling
+     * {@link #visitChildren} on {@code ctx}.</p>
+     */
+    @Override public Value visitTipo(LITEParser.TipoContext ctx) { return visitChildren(ctx); }
 
-            // evaluate the code block
-            this.visit(ctx.stat_block());
-
-            // evaluate the expression
-            value = this.visit(ctx.expr());
-        }
-
-        return Value.VOID;
-    }
 }

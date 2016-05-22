@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="160cef22-84a9-4e18-b77f-cd6a44cf5e60" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITE.tokens" afterPath="$PROJECT_DIR$/src/grammar/LITE.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITEBaseListener.java" afterPath="$PROJECT_DIR$/src/grammar/LITEBaseListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITELexer.java" afterPath="$PROJECT_DIR$/src/grammar/LITELexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITELexer.tokens" afterPath="$PROJECT_DIR$/src/grammar/LITELexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITEListener.java" afterPath="$PROJECT_DIR$/src/grammar/LITEListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITEParser.java" afterPath="$PROJECT_DIR$/src/grammar/LITEParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/grammar/LITEVisitor.java" afterPath="$PROJECT_DIR$/src/grammar/LITEVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/MainTest.java" afterPath="$PROJECT_DIR$/src/test/MainTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/semantic/EvalVisitor.java" afterPath="$PROJECT_DIR$/src/semantic/EvalVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/semantic/Value.java" afterPath="$PROJECT_DIR$/src/semantic/Value.java" />
     </list>
     <ignored path="KitCodeBackEnd.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,14 +46,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8162328">
+            <state vertical-scroll-proportion="0.0">
               <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EvalVisitor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/semantic/EvalVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.312102">
+              <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
+              <folding>
+                <element signature="e#559#560#0" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Value.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/semantic/Value.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LITEParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/grammar/LITEParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="215" selection-end-column="91" />
               <folding />
             </state>
           </provider>
@@ -129,6 +154,8 @@
         <option value="$PROJECT_DIR$/src/grammar/LITELexer.java" />
         <option value="$PROJECT_DIR$/src/grammar/LITE.g4" />
         <option value="$PROJECT_DIR$/src/test/MainTest.java" />
+        <option value="$PROJECT_DIR$/src/semantic/Value.java" />
+        <option value="$PROJECT_DIR$/src/semantic/EvalVisitor.java" />
       </list>
     </option>
   </component>
@@ -167,9 +194,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -224,12 +248,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="semantic" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KitCodeBackEnd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KitCode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="grammar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -513,11 +558,12 @@
       <option name="number" value="Default" />
       <updated>1463850611719</updated>
       <workItem from="1463850613472" duration="30450000" />
+      <workItem from="1463907079908" duration="2199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31548000" />
+    <option name="totallyTimeSpent" value="33747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -561,6 +607,64 @@
     <entry file="file://$PROJECT_DIR$/src/grammar/LITE.g4">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITE.tokens">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/MainTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITEVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITELexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITE.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -600,14 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/LITEParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11980831">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/LITELexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -632,14 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -650,10 +738,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8162328">
+        <state vertical-scroll-proportion="0.0">
           <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITEParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/grammar/LITEBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="215" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/semantic/Value.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/semantic/EvalVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.312102">
+          <caret line="111" column="46" selection-start-line="111" selection-start-column="46" selection-end-line="111" selection-end-column="46" />
+          <folding>
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
           </folding>
         </state>
       </provider>
