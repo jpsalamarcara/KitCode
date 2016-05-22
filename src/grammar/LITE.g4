@@ -2,7 +2,8 @@ grammar LITE;
 programa
 : PR_INICIO
  (sentencia)*
- PR_FIN EOF;
+ PR_FIN
+ EOF;
 
 sentencia
 : declaracion
@@ -51,9 +52,9 @@ expresion_atomica
 ;
 
 tipo
-:NUMERO
-|PALABRA
-|BOOLEANO
+:PR_NUMERO
+|PR_PALABRA
+|PR_BOOLEANO
 ;
 
 PR_OPERADOR_POTENCIA : 'elevado';
@@ -72,13 +73,11 @@ PR_Y : 'y'|'Y';
 PR_O : 'o'|'O';
 PR_PAR_ABIERTO : '(';
 PR_PAR_CERRADO : ')';
-NUMERO :  [0-9]+ ('.' [0-9]*)? ;
 VERDADERO: 'verdadero';
 FALSO: 'falso';
-VARIABLE: [a-zA-Z_] [a-zA-Z_0-9]*;
-TEXTO : '"' (~["\r\n] | '""')* '"';
-PALABRA : 'palabra' ;
-BOOLEANO :  'booleano';
+PR_NUMERO: 'numero';
+PR_PALABRA : 'palabra' ;
+PR_BOOLEANO :  'booleano';
 PR_INICIO : 'inicio';
 PR_FIN : 'fin';
 PR_CREA : 'crea';
@@ -91,5 +90,8 @@ PR_MIENTRAS : 'mientras';
 PR_HACER : 'hacer';
 PR_IMPRIMIR : 'mostrar';
 PR_SINO : 'sino';
+TEXTO : '"' (~["\r\n] | '""')* '"';
+NUMERO :  [0-9]+ ('.' [0-9]*)? ;
+VARIABLE: [a-zA-Z_] [a-zA-Z_0-9]*;
 SPACE : [ \t\r\n] -> skip;
 OTRO : .  ;
