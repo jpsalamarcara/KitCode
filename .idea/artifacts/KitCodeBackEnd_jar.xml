@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="KitCodeBackEnd:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/KitCodeBackEnd_jar</output-path>
+    <root id="archive" name="KitCodeBackEnd.jar">
+      <element id="module-output" name="KitCodeBackEnd" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/antlr-4.5.3-complete.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -12,7 +12,8 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
     public static final double SMALL_VALUE = 0.00000000001;
 
     // store variables (there's only one global scope!)
-    private Map<String, Value> memory = new HashMap<String, Value>();
+    private Map<String, Value> memoria = new HashMap<String, Value>();
+    private String salida = "";
 
     @Override
     public Value visitPrograma(LITEParser.ProgramaContext ctx) {
@@ -31,21 +32,53 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitSentencia_si(LITEParser.Sentencia_siContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitSentencia_si(LITEParser.Sentencia_siContext ctx) {
+
+        Value condicion = this.visit(ctx.expresion()) ;
+        boolean condicion_principal= condicion.asBoolean();
+        if(condicion_principal){
+            List<LITEParser.SentenciaContext> sentencias =  ctx.sentencia();
+            for(LITEParser.SentenciaContext sentencia:sentencias ){
+                this.visit(sentencia);
+            }
+        }
+
+        if(!condicion_principal && ctx.sentencia_sino()!=null){
+            this.visit(ctx.sentencia_sino());
+        }
+
+        return Value.VOID; }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitSentencia_mientras(LITEParser.Sentencia_mientrasContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitSentencia_mientras(LITEParser.Sentencia_mientrasContext ctx) {
+
+        Value valor = this.visit(ctx.expresion());
+        while(valor.asBoolean()){
+            List<LITEParser.SentenciaContext> sentencias =  ctx.sentencia();
+            for(LITEParser.SentenciaContext sentencia:sentencias ){
+                this.visit(sentencia);
+            }
+            valor = this.visit(ctx.expresion());
+        }
+
+
+        return Value.VOID; }
     /**
      * {@inheritDoc}
      *
      * <p>The default implementation returns the result of calling
      * {@link #visitChildren} on {@code ctx}.</p>
      */
-    @Override public Value visitSentencia_imprimir(LITEParser.Sentencia_imprimirContext ctx) { return visitChildren(ctx); }
+    @Override public Value visitSentencia_imprimir(LITEParser.Sentencia_imprimirContext ctx) {
+
+        Value valor = this.visit(ctx.expresion());
+        salida=salida.concat(valor.toString()+"\n");
+        System.out.println(valor);
+        return Value.VOID; }
     /**
      * {@inheritDoc}
      *
@@ -69,7 +102,7 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
     @Override public Value visitAsignacion(LITEParser.AsignacionContext ctx) {
         String variable = ctx.VARIABLE().getText();
         Value valor = this.visit(ctx.expresion());
-        return memory.put(variable,valor);
+        return memoria.put(variable,valor);
     }
     /**
      * {@inheritDoc}
@@ -297,7 +330,7 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      */
     @Override public Value visitAVariable(LITEParser.AVariableContext ctx) {
         String variable = ctx.getText();
-        Value valor = memory.get(variable);
+        Value valor = memoria.get(variable);
 
         if(valor==null){
             throw new RuntimeException("la variable "+variable+" no está asignada");
@@ -330,5 +363,10 @@ public class EvalVisitor extends LITEBaseVisitor<Value> { // used to compare flo
      * {@link #visitChildren} on {@code ctx}.</p>
      */
     @Override public Value visitTipo(LITEParser.TipoContext ctx) { return visitChildren(ctx); }
+
+
+    public String getSalida(){
+        return this.salida;
+    }
 
 }

@@ -6,6 +6,9 @@ import grammar.LITEParser;
 
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import semantic.EvalVisitor;
+import semantic.Value;
 
 /**
  * Created by juanpablo on 21/05/16.
@@ -14,14 +17,13 @@ public class MainTest {
 
     public static void main(String[] args){
 
-        ANTLRInputStream in = new ANTLRInputStream(
-                "inicio\n" +
+        String programa = "inicio\n" +
                 "crea actual como numero;\n" +
                 "crea ant1 como numero;\n" +
                 "crea ant2 como numero;\n" +
                 "crea  n como numero;\n" +
                 "crea i como numero;\n" +
-                "\n" +
+                "n es 5;\n" +
                 "ant1 es 1;\n" +
                 "ant2 es 1;\n" +
                 "i es 2;\n" +
@@ -36,11 +38,23 @@ public class MainTest {
                 "mostrar(actual);\n" +
                 "fin\n" +
                 "\n" +
-                "fin");
+                "fin";
+        String programa2 = "inicio\n" +
+                "si (1 igual 1) entonces\n"+
+                "mostrar(\"hola mundo\");\n" +
+                "fin\n" +
+                "fin";
+
+        ANTLRInputStream in = new ANTLRInputStream(programa2
+                );
 
         LITELexer lexer = new LITELexer(in);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         LITEParser parser = new LITEParser(tokens);
-        parser.programa();
+        ParseTree tree = parser.programa();
+        EvalVisitor visitor = new EvalVisitor();
+        visitor.visit(tree);
+        System.out.println(visitor.getSalida());
+
     }
 }
