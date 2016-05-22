@@ -6,11 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="160cef22-84a9-4e18-b77f-cd6a44cf5e60" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/semantic/EvalVisitor.java" afterPath="$PROJECT_DIR$/src/semantic/EvalVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/semantic/ExecuteLITEProgram.java" afterPath="$PROJECT_DIR$/src/semantic/ExecuteLITEProgram.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/MainTest.java" afterPath="$PROJECT_DIR$/src/test/MainTest.java" />
-    </list>
+    <list default="true" id="160cef22-84a9-4e18-b77f-cd6a44cf5e60" name="Default" comment="" />
     <ignored path="KitCodeBackEnd.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,7 +41,7 @@
       <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/MainTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.25874126">
+            <state vertical-scroll-proportion="1.013986">
               <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -579,12 +575,12 @@
       <option name="number" value="Default" />
       <updated>1463850611719</updated>
       <workItem from="1463850613472" duration="30450000" />
-      <workItem from="1463907079908" duration="11685000" />
+      <workItem from="1463907079908" duration="12269000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43233000" />
+    <option name="totallyTimeSpent" value="43817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
@@ -812,7 +808,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.25874126">
+        <state vertical-scroll-proportion="1.013986">
           <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
